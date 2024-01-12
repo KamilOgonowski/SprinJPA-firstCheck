@@ -1,0 +1,5 @@
+package com.kamil.bo;
+
+public class VaccineDetails {
+
+}

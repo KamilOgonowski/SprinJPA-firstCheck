@@ -1,0 +1,23 @@
+package com.kamil.bo;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity // map to BD - if no stated differently the table name will be the same as the class name
+@Table(name="VaccineInfo") //changing class name to VaccineInfo
+public class VaccineDetails {
+	
+	@Id
+	@Column(name="ID") // just to change the name of the column, otherwise it takes field's name - id 
+	private Long id;
+	
+	@Column(name="VaccineName") 
+	private String vaccineName;
+	
+	private String companyName;
+	
+	private Integer vaccinePrice;
+
+}

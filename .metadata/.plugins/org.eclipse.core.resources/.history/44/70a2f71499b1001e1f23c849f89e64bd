@@ -1,0 +1,10 @@
+package com.kamil.bo;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity // map to BD - if no stated differently the table name will be the same as the class name
+@Table(name="VaccineInfo") //changing class name to VaccineInfo
+public class VaccineDetails {
+
+}

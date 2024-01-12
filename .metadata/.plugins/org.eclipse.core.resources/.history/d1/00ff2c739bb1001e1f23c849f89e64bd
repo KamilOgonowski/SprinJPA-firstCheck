@@ -1,0 +1,11 @@
+package com.kamil.dao;
+
+import java.io.Serializable;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.kamil.bo.VaccineDetails;
+
+public interface IVaccineRepo extends CrudRepository<VaccineDetails, Serializable> {
+
+}
