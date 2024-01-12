@@ -1,0 +1,13 @@
+package com.kamil.service;
+
+import com.kamil.bo.VaccineDetails;
+
+public class VaccineManagementImpl implements IVaccineManagement {
+
+	@Override
+	public String registerVaccineDetails(VaccineDetails vaccine) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
