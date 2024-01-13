@@ -3,6 +3,7 @@ package com.kamil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -58,6 +59,16 @@ public class VaccineManagementAppApplication {
 		 */
 		//or second reduced approach - chaining:		
 		service.getAllVaccinesById(listOfId).forEach(vaccine->System.out.println(vaccine));
+		Long id = 9L;
+		Optional<VaccineDetails> optional = service.getVaccineByID(id);
+		if (optional.isPresent()) {
+			VaccineDetails vaccineDetailsId3 = optional.get(); // .get() to take VaccineDetails object out of Optional class
+			System.out.println(vaccineDetailsId3);
+		}else
+			System.out.println("There is no positional with id=" + id);
+	
+		System.out.println("Check with printing of optional type object where the ID is not avaiable: " + optional);
+//		System.out.println(service.getVaccineByID(9));
 		
 		
 		
