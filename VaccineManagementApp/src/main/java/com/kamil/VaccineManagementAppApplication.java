@@ -1,5 +1,6 @@
 package com.kamil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +23,46 @@ public class VaccineManagementAppApplication {
 //		String message = service.registerVaccineDetails(vaccine);
 //		System.out.println(message);
 		
-		List<VaccineDetails> vaccineList = new ArrayList<>();
-		vaccineList.add(new VaccineDetails("CovidShield", "AstraZeneca", 88789));
-		vaccineList.add(new VaccineDetails("Phizer", "Phizer", 444112));
-		vaccineList.add(new VaccineDetails("Sputnik", "Sputnik", 46556));
-		service.registerMultipleVaccineDetails(vaccineList);
-		System.out.println("Check your DB");
+//		List<VaccineDetails> vaccineList = new ArrayList<>();
+//		vaccineList.add(new VaccineDetails("CovidShield", "AstraZeneca", 88789));
+//		vaccineList.add(new VaccineDetails("Phizer", "Phizer", 444112));
+//		vaccineList.add(new VaccineDetails("Sputnik", "Sputnik", 46556));
+//		service.registerMultipleVaccineDetails(vaccineList);
+//		
+//		System.out.println("Check your DB");
+		
+//		System.out.println("The current number of roes in your DB is: " + service.numberOfRecordInDB());
+//		Long id = 2L;
+//		boolean status = service.checkAvailavility(id);
+//		if (status)
+//			System.out.println("Vaccine available with id: " + id);
+//		else
+//			System.out.println("Vaccine not available with id: " + id);
+//		
+		
+		
+//		Iterable<VaccineDetails> vaccineInfo = service.getAllVaccines();
+//		List<VaccineDetails> vaccineInfotoStream = (List<VaccineDetails>) service.getAllVaccines();
+//		vaccineInfotoStream.forEach(vaccine-> System.out.println("Details for id: " + vaccine.getId() + ": " +vaccine));
+		
+		
+		ArrayList<Serializable> listOfId = new ArrayList();
+		listOfId.add(3L);
+		listOfId.add(1L);
+		listOfId.add(2L);
+		
+		/*
+		 * Iterable<VaccineDetails> listBasedOnId =
+		 * service.getAllVaccinesById(listOfId); listBasedOnId.forEach(vaccine ->
+		 * System.out.println(vaccine));
+		 */
+		//or second reduced approach - chaining:		
+		service.getAllVaccinesById(listOfId).forEach(vaccine->System.out.println(vaccine));
+		
+		
+		
+
+		
 		context.close();
 	}
 

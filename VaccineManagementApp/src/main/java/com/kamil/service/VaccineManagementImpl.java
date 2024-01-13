@@ -1,5 +1,7 @@
 package com.kamil.service;
 
+import java.io.Serializable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,31 @@ public class VaccineManagementImpl implements IVaccineManagement {
 	public Iterable<VaccineDetails> registerMultipleVaccineDetails(Iterable<VaccineDetails> vaccineList) {
 		return repo.saveAll(vaccineList);
 	}
+
+	@Override
+	public Long numberOfRecordInDB() {
+		return repo.count();
+	}
+
+	@Override
+	public boolean checkAvailavility(Long id) {
+		return repo.existsById(id);
+	}
+
+	@Override
+	public Iterable<VaccineDetails> getAllVaccines() {
+		return repo.findAll();
+	}
+
+	@Override
+	public Iterable<VaccineDetails> getAllVaccinesById(Iterable<Serializable> listOfIds) {
+		return repo.findAllById(listOfIds);
+		
+	}
+
+
+
+	
+	
 
 }
