@@ -2,18 +2,21 @@ package com.kamil.bo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // to map this class to database - so to create a table there -> if no stated differently the table name will be the same as the class name
-@Table(name="VaccineInfo") //changing class name to VaccineInfo
+@Table(name="Vaccine Details") //changing class name to VaccineInfo
 public class VaccineDetails {
 	
 	@Id
-	@Column(name="ID") // just to change the name of the column, otherwise it takes field's name - id 
+	@Column(name="IDTest") // just to change the name of the column, otherwise it takes field's name - id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // IDENTITY is for MySQL db, AUTO - not sure which DB, Sequence - OracleDB
 	private Long id;
 	
-	@Column(name="VaccineName") 
+	@Column(name="Vaccine Name") 
 	private String vaccineName;
 	
 	private String companyName;
@@ -21,10 +24,16 @@ public class VaccineDetails {
 	private Integer vaccinePrice;
 	
 	public VaccineDetails() {
-		System.out.println("Vaccine Zero Param Constructor");
-		
+		System.out.println("Vaccine Zero Param Constructor"); // REQUIRED BY HIBERNATE
 	}
 
+	public VaccineDetails(String vaccineName, String companyName, Integer vaccinePrice) {
+		super();
+		this.vaccineName = vaccineName;
+		this.companyName = companyName;
+		this.vaccinePrice = vaccinePrice;
+	}
+	
 	public Long getId() {
 		return id;
 	}

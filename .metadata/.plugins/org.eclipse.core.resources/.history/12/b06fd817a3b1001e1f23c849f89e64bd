@@ -1,0 +1,23 @@
+package com.kamil;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.kamil.bo.VaccineDetails;
+import com.kamil.service.VaccineManagementImpl;
+
+@SpringBootApplication
+public class VaccineManagementAppApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(VaccineManagementAppApplication.class, args);
+		
+		VaccineManagementImpl service = context.getBean(VaccineManagementImpl.class);
+		VaccineDetails vaccine = new VaccineDetails("AstraZeneca", "No Pain no Gain", 45478);
+		String message = service.registerVaccineDetails(vaccine);
+		
+		context.close();
+	}
+
+}

@@ -15,8 +15,13 @@ public class VaccineManagementImpl implements IVaccineManagement {
 	@Override
 	public String registerVaccineDetails(VaccineDetails vaccine) {
 		System.out.println("Implementing class of IVaccineRepo is: " + repo.getClass().getName());
-		//repo.save(vaccine);
-		return null;
+		VaccineDetails v = repo.save(vaccine);
+		return "Vaccine Details register with ID: " +v.getId();
+	}
+
+	@Override
+	public Iterable<VaccineDetails> registerMultipleVaccineDetails(Iterable<VaccineDetails> vaccineList) {
+		return repo.saveAll(vaccineList);
 	}
 
 }
