@@ -76,13 +76,26 @@ public class VaccineManagementImpl implements IVaccineManagement {
 
 		return "Deletion process has been completed";
 	}
+	public String deleteVaccinesByIdsTransactional(List<Serializable> ids) { //All or nothing
+		List<VaccineDetails> list = (List<VaccineDetails>)repo.findAllById(ids);
+		int sizeOfListOfFetchedVaccines = list.size();
+		if(sizeOfListOfFetchedVaccines==ids.size()) {
+			repo.deleteAllById(ids);
+			return "All requested vaccines: (" + sizeOfListOfFetchedVaccines + ") have been deleted";
+		}else
+			return "Deletion has been cancelled as not all requested IDs were available in the provided list";
 	
-	//tomorrow -> write above method in s transactional manner-> all or nothing
+	}
+	
 
 	@Override
 	public String deleteVaccinesByObject(VaccineDetails vaccine) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<VaccineDetails> vaccineInfo = repo.findById(vaccine.getId());
+		if(vaccineInfo.isPresent()){ 
+			repo.delete(vaccine);
+			return "Provided vaccine object has been deleted from DB";
+		}
+		return "No such object was avaiaible in the DB";
 	}
 	
 
