@@ -1,6 +1,7 @@
 package com.kamil.service;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,44 @@ public class VaccineManagementImpl implements IVaccineManagement {
 
 	@Override
 	public Iterable<VaccineDetails> getAllVaccinesById(Iterable<Serializable> listOfIds) {
-		return repo.findAllById(listOfIds); 
-		
+		return repo.findAllById(listOfIds); 		
 	}
 
 	@Override
 	public Optional<VaccineDetails> getVaccineByID(Serializable id) {
 		return repo.findById(id);
 //		return Optional.empty();
+	}
+
+	@Override
+	public String deleteVaccineById(Serializable id) {
+//		repo.deleteById(id);
+//		System.out.println("The position with id=" + id + " has been removed from DB");
+		if (repo.findById(id).isPresent()){
+			repo.deleteById(id);
+			return "The position with id=" + id + " has been removed from DB";
+		}else
+			return "No object of ID=" + id + " available in the DB";
+	}
+
+	@Override
+	public String deleteVaccinesByIds(List<Serializable> ids) {
+		
+		List<VaccineDetails> tst = (List<VaccineDetails>)getAllVaccinesById(ids);
+		tst.forEach(vaccine->System.out.println("ready to be deleted:" + vaccine));
+		repo.deleteAllById(ids);
+		ids.forEach(number->System.out.println("Record with id: " + number + " has been deleted"));
+
+
+		return "Deletion process has been completed";
+	}
+	
+	//tomorrow -> write above method in s transactional manner-> all or nothing
+
+	@Override
+	public String deleteVaccinesByObject(VaccineDetails vaccine) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
