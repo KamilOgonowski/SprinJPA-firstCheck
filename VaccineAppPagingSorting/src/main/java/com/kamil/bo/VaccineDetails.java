@@ -23,8 +23,8 @@ public class VaccineDetails {
 	
 	private Integer vaccinePrice;
 	
-	public VaccineDetails() {
-		System.out.println("Vaccine Zero Param Constructor"); // REQUIRED BY HIBERNATE
+	public VaccineDetails() { // Zero parameters constructor is REQUIRED BY HIBERNATE
+//		System.out.println("Vaccine Zero Param Constructor"); 
 	}
 
 	public VaccineDetails(String vaccineName, String companyName, Integer vaccinePrice) {
