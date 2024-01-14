@@ -41,7 +41,7 @@ public class VaccineManagementAppApplication {
 //		service.fetchDetailsByPgNo(1, 2, true, "vaccineName", "companyName").
 //		forEach(vaccine -> System.out.println(vaccine.getVaccineName() + " =>" + vaccine.getCompanyName()));
 
-		
+//		service.addVaccine(new VaccineDetails("Some Vaccine", "Some Company", 4585));
 		service.fetchDetailsByPagination(2);
 		context.close();
 	}

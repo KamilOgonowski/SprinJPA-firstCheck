@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 
 import com.kamil.bo.VaccineDetails;
 @Repository // optional annotation
-public interface IVaccineRepo extends PagingAndSortingRepository<VaccineDetails, Long>{}
+public interface IVaccineRepo extends PagingAndSortingRepository<VaccineDetails, Long>,  CrudRepository<VaccineDetails, Long>{}

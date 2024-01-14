@@ -14,5 +14,7 @@ public interface IVaccineManagement {
 	public Iterable<VaccineDetails> fetchDetails(boolean status, String... properties);
 	public List<VaccineDetails> fetchDetailsByPgNo(int pgNo, int pgSize, boolean status, String... properties );
 	public void fetchDetailsByPagination(int pageSize);
+	public List<VaccineDetails> findAllVaccines();
+	public boolean addVaccine(VaccineDetails vaccine);
 	
 }

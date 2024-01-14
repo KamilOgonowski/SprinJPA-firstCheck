@@ -49,18 +49,34 @@ public class VaccineManagementImpl implements IVaccineManagement {
 
 	@Override
 	public void fetchDetailsByPagination(int pageSize) {
-		long count = 4L; //added by hand based on the amount in the DB. In next project use it together with methods of CrudRepository to take the data from DB
-		long pagesCount =count/pageSize;
-		pagesCount = count%pageSize == 0?pagesCount:++pagesCount;
+		
+		long count1 = findAllVaccines().size();
+//		long count = 4L; //added by hand based on the amount in the DB. In next project use it together with methods of CrudRepository to take the data from DB
+		long pagesCount =count1/pageSize;
+		pagesCount = count1%pageSize == 0?pagesCount:++pagesCount;
 		
 		for(int i=0; i<pagesCount; i++) {
-			PageRequest pegeable = PageRequest.of(i, pageSize);
-			Page<VaccineDetails> page = repo.findAll(pegeable);
+			PageRequest fakePegeable = PageRequest.of(i, pageSize);
+			Page<VaccineDetails> page = repo.findAll(fakePegeable);
 			page.getContent().forEach(vaccine -> System.out.println(vaccine.getVaccineName() +" => " + vaccine.getCompanyName()));
 
 			System.out.println("Page number: " + (page.getNumber()+1) + " of " + page.getTotalPages() + " total. \n" );
-			
 		}
+	}
+
+	@Override
+	public List<VaccineDetails> findAllVaccines() {
+		return (List<VaccineDetails>)repo.findAll();
+	}
+	@Override
+	public boolean addVaccine(VaccineDetails vaccine) {
+		
+		int before = findAllVaccines().size();
+		repo.save(vaccine);
+		int after = findAllVaccines().size();
+		
+		System.out.println(before<after?"New Vacine: "+ vaccine.getVaccineName()+" has been added to DB: " :"Fail to update");
+		return before<after?true:false;
 	}
 	
 	
