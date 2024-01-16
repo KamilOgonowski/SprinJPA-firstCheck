@@ -10,3 +10,5 @@ import org.springframework.stereotype.Repository;
 import com.kamil.bo.VaccineDetails;
 @Repository // optional annotation
 public interface IVaccineRepo extends JpaRepository<VaccineDetails, Long>{}
+
+

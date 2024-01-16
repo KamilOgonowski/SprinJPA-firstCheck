@@ -1,5 +1,7 @@
 INDEX VERSION 1.134+C:\Users\ogono\Desktop\programowanie\Programowanie\Telusko\10.01.2024 spring JPA\jeszcze raz\.metadata\.plugins\org.eclipse.jdt.core
+2832302806.index
 3791642252.index
+2015853007.index
 2260347537.index
 1865797976.index
 645446437.index
