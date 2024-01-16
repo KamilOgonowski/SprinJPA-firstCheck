@@ -21,6 +21,9 @@ public class VaccineManagementAppApplication {
 		
 		VaccineManagementImpl service = context.getBean(VaccineManagementImpl.class);
 //		
+		List<ResultView> list = service.fetchedByPriceLessThan(6000);
+		list.forEach(vac->System.out.println(vac.getCompanyName() + " => " + vac.getVaccineName()));
+		
 		context.close();
 //		
 	}
