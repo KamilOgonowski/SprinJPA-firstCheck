@@ -17,4 +17,10 @@
     <fullyQualifiedTypeName name="org.springframework.data.domain.Sort.Direction"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="com.kamil.ResultView"/>
+    <fullyQualifiedTypeName name="com.kamil.view.View"/>
+    <fullyQualifiedTypeName name="com.kamil.view.ResultView2"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.kamil.view.ResultView"/>
 </qualifiedTypeNameHistroy>
