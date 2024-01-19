@@ -4,9 +4,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kamil.bo.VaccineDetails;
 @Repository // optional annotation
@@ -29,7 +31,30 @@ public interface IVaccineRepo extends JpaRepository<VaccineDetails, Long>{
 //	
 	@Query("SELECT vaccineName, vaccinePrice  FROM VaccineDetails WHERE vaccineName IN(:vac1, :vac2)")
 	public List<Object[]> searchVaccineDetailByVaccineName(String vac1, String vac2);
-
+	
+	@Query("Select companyName, vaccineName From VaccineDetails WHERE vaccinePrice<:price")
+	public List<String> searchVaccineAndCompanyNameWithPriceLessThan(int price);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE VaccineDetails SET vaccinePrice=:newPrice WHERE vaccineName=:vaccineName")
+	public int updatePriceByVaccine(int newPrice, String vaccineName);
+	
+	
+	
+	@Transactional
+	@Modifying
+	@Query("DELETE VaccineDetails WHERE vaccineName=:vaccineName")
+	public int deleteVaccineByVaccineName(String vaccineName);
+	
+	@Transactional
+	@Modifying
+	@Query(value="INSERT INTO `vaccine details` (`vaccine_price`, `company_name`, `vaccine name`) VALUES (?,?,?)", nativeQuery=true)
+	public int insertVaccine(Integer vaccinePrice, String companyName, String vaccineName);
+	
+	
+	
+ 
 }
 
 

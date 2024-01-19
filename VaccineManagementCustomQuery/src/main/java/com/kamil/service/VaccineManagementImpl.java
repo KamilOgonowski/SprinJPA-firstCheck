@@ -39,6 +39,30 @@ public class VaccineManagementImpl implements IVaccineManagement {
 		return repo.searchVaccineDetailByVaccineName(vac1, vac2);
 	}
 
+@Override
+public List<String> fetchVaccineAndCompanyNameWithPriceLessThan(int price) {
+		return repo.searchVaccineAndCompanyNameWithPriceLessThan(price);
+}
+
+
+@Override
+public int changePriceByVaccine(int newPrice, String vaccineName) {
+	return repo.updatePriceByVaccine(newPrice, vaccineName);
+	
+}
+
+@Override
+public int deleteVaccineByVaccineName(String vaccineName) {
+	return repo.deleteVaccineByVaccineName(vaccineName);
+}
+
+@Override
+public int insertVaccineToBd(Integer vaccinePrice, String companyName, String vaccineName) {
+	return repo.insertVaccine(vaccinePrice, companyName, vaccineName);
+}
+	
+	
+
 
 
 

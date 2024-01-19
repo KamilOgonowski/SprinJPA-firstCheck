@@ -18,5 +18,16 @@ public interface IVaccineManagement {
 //	
 //
 	public List<Object[]> fetchVaccineDetailByVaccineName(String vac1, String vac2);
+	
+	public List<String> fetchVaccineAndCompanyNameWithPriceLessThan(int price);
+	
+
+	
+	public int changePriceByVaccine(int newPrice, String vaccineName);
+	
+	public int deleteVaccineByVaccineName(String vaccineName);
+	
+	public int insertVaccineToBd(Integer vaccinePrice, String companyName, String vaccineName);
+	
 
 }

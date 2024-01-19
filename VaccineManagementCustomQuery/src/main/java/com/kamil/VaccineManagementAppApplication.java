@@ -31,6 +31,28 @@ public class VaccineManagementAppApplication {
 //
 		System.out.println("***************************");
 		service.fetchVaccineDetailByVaccineName("Sputnik", "Some Vaccine").forEach(v->System.out.println(v));
+		
+		List<Object[]> listka = service.fetchVaccineDetailByVaccineName("Sputnik", "Some Vaccine");
+		for (Object [] list : listka) {
+			for(Object vaccine: list) {
+				System.out.println(vaccine);
+			}
+		}
+		
+		System.out.println("==============================");
+		service.fetchVaccineAndCompanyNameWithPriceLessThan(5000).forEach(v->System.out.println("to tuuuuu" + v));
+		
+		System.out.println("=====Update=====");
+		int counter = service.changePriceByVaccine(35, "Some Vaccine");
+		if (counter!=0) {
+			System.out.println("The price has been updated for " + counter + " entry");
+		}else {
+			System.out.println("Fail to update!");
+		}
+		
+		System.out.println(service.deleteVaccineByVaccineName("Sputnik")>0?"deletion complete":"fail to delete");
+		
+		System.out.println("Number of added vaccines = " +  service.insertVaccineToBd(56900, "Big Vaccine", "Vacine Mix"));
 
 		context.close();
 //		

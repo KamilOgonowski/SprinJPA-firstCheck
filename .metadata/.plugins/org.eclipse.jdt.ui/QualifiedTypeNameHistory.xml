@@ -23,4 +23,6 @@
     <fullyQualifiedTypeName name="com.kamil.view.ResultView2"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.kamil.view.ResultView"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
 </qualifiedTypeNameHistroy>
